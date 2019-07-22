@@ -15,6 +15,8 @@ Característica: Buscar películas por su título
      | Halloween II               | John Carpenter   | Donald Pleasence, Jamie Lee Curtis, P. J. Soles  | terror       | ingles, aleman, espanol  | 1081     | R         |
      | American Psycho            | Mary Harron      | Christian Bale, Willem Dafoe, Jared Leto         | terror       | aleman                   | 2000     | NC-17     |
 
+     Cuando hello
+     Entonces hello
 
   @peliculasPorTítulo
   Escenario: Filtrar películas que contienen en su título la palabra 'Hal'

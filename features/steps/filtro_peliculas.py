@@ -58,3 +58,11 @@ def step_impl(context, mensaje):
 	print(mensaje)
 	print(context.mensaje)
 	assert context.mensaje == mensaje
+
+@when("hello")
+def step_impl(context):
+	pass
+
+@then("hello")
+def step_impl(context):
+	pass
