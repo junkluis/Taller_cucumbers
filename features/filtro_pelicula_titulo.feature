@@ -1,9 +1,9 @@
 # language: es
 
-Característica: Buscar peliculas por su titulo
+Característica: Buscar películas por su título
 
   Antecedentes:
-      Dado un conjunto de peliculas
+      Dado un conjunto de películas
      | TITULO                     | DIRECTOR         | ELENCO                                           | GENERO       | IDIOMAS                  | ESTRENO  | RAITING   |
      | El rey león                | Jon Favreau      | Donald Glover, John Oliver, Seth Rogen           | aventura     | ingles, espanol          | 2019     | G         |
      | Toy Story 3                | Josh Cooley      | Tom Hanks, Tim Allen, Joan Cusack                | animada      | ingles, aleman           | 2010     | G         |
@@ -16,22 +16,22 @@ Característica: Buscar peliculas por su titulo
      | American Psycho            | Mary Harron      | Christian Bale, Willem Dafoe, Jared Leto         | terror       | aleman                   | 2000     | NC-17     |
 
 
-  @peliculasPorTitulo
-  Escenario: Filtrar peliculas que contienen en su titulo la palabra 'Hal'
-      Dada el usuario ingresa el titulo: 'Hal'
-      Cuando busque la pelicula por titulo
-      Entonces obtendrá 2 peliculas que coincidan
-      Y los titulos de estas peliculas son
+  @peliculasPorTítulo
+  Escenario: Filtrar películas que contienen en su título la palabra 'Hal'
+      Dada el usuario ingresa el título: 'Hal'
+      Cuando busque la películas por título
+      Entonces obtendrá 2 películas que coincidan
+      Y los título de estas películas son
       | TITULO        |
       | Halloween     |
       | Halloween II  |
-      Y obtiene el siguiente mensaje 'Se encontraron 2 pelicula(s) que contienen en su titulo la palabra: Ha'
+      Y obtiene el siguiente mensaje 'Se encontraron 2 película(s) que contienen en su título la palabra: Ha'
 
 
-  @peliculasPorTitulo
-  Escenario: Filtrar peliculas por titulo, sin encontrar resultado
-      Dada el usuario ingresa el titulo: 'xyz'
-      Cuando busque la pelicula por titulo
-      Entonces obtendrá 0 peliculas que coincidan
-      Y obtiene el siguiente mensaje 'Se encontraron 2 pelicula(s) que contienen en su titulo la palabra: Ha'
+  @peliculasPorTítulo
+  Escenario: Filtrar películas por título, sin encontrar resultado
+      Dada el usuario ingresa el título: 'xyz'
+      Cuando busque la películas por título
+      Entonces obtendrá 0 películas que coincidan
+      Y obtiene el siguiente mensaje 'Se encontraron 2 película(s) que contienen en su título la palabra: Ha'
 

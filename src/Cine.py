@@ -4,9 +4,9 @@ def get_pelicula_titulo(lista_peliculas, titulo):
 	"""Busqueda de peliculas por tilulo"""
 	busqueda = list(filter(lambda x: titulo.lower() in x.titulo.lower(), lista_peliculas))
 	if len(busqueda)>0:
-		mensaje = 'Se encontraron '+str(len(busqueda))+' pelicula(s) que contienen en su titulo la palabra: ' + titulo
+		mensaje = 'Se encontraron '+str(len(busqueda))+' película(s) que contienen en su título la palabra: ' + titulo
 	else:
-		mensaje = 'No se encontro ninguna pelicula.'
+		mensaje = 'No se encontro ninguna película con el título especificado.'
 	return busqueda, mensaje
 
 
@@ -15,9 +15,9 @@ def get_pelicula_raiting(lista_peliculas, raiting):
 
 	busqueda = list(filter(lambda x: x.raiting in raiting, lista_peliculas))
 	if len(busqueda)>0:
-		mensaje = 'Se encontraron '+str(len(busqueda))+' pelicula(s).'
+		mensaje = 'Se encontraron '+str(len(busqueda))+' película(s).'
 	else:
-		mensaje = 'No se encontro ninguna pelicula.'
+		mensaje = 'No se encontro ninguna película.'
 	return busqueda, mensaje
 
 
@@ -26,9 +26,9 @@ def get_pelicula_idiomas(lista_peliculas, idioma):
 
 	busqueda = list(filter(lambda x: idioma in x.idioma, lista_peliculas))
 	if len(busqueda)>0:
-		mensaje = 'Se encontraron '+str(len(busqueda))+' pelicula(s).'
+		mensaje = 'Se encontraron '+str(len(busqueda))+' película(s).'
 	else:
-		mensaje = 'No se encontro ninguna pelicula.'
+		mensaje = 'No se encontro ninguna película.'
 	return busqueda, mensaje
 
 
@@ -37,18 +37,18 @@ def get_pelicula_elenco(lista_peliculas, lista_actores):
 
 	busqueda = list(filter(lambda x: revisar_lista_elenco( x.elenco ,lista_actores), lista_peliculas))
 	if len(busqueda)>0:
-		mensaje = 'Se encontraron '+str(len(busqueda))+' pelicula(s).'
+		mensaje = 'Se encontraron '+str(len(busqueda))+' película(s).'
 	else:
-		mensaje = 'No se encontro ninguna pelicula.'
+		mensaje = 'No se encontro ninguna película.'
 	return busqueda, mensaje
 
 
 def get_pelicula_fecha_estreno(lista_peliculas, anio_inicio=1800, anio_fin=2020):
 	busqueda = list(filter(lambda x: anio_inicio <= x.estreno <= anio_fin, lista_peliculas))
 	if len(busqueda)>0:
-		mensaje = 'Se encontraron '+str(len(busqueda))+' pelicula(s).'
+		mensaje = 'Se encontraron '+str(len(busqueda))+' película(s).'
 	else:
-		mensaje = 'No se encontro ninguna pelicula.'
+		mensaje = 'No se encontro ninguna película.'
 	return busqueda, mensaje
 
 

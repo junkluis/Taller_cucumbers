@@ -2,12 +2,13 @@ from behave import *
 from src.Pelicula import *
 from src.Cine import *
 
-
+#Condiciones antes de empezar cualquier STEP
 def before_scenario(context, scenario):
 	context = {}
 
 
-@given("un conjunto de peliculas")
+#Obtener la lista de peliculas (datos de prueba)
+@given("un conjunto de películas")
 def step_impl(context):
 	lista_peliculas = []
 
@@ -21,12 +22,12 @@ def step_impl(context):
 	context.peliculas = lista_peliculas
 
 
-@given("el usuario ingresa el titulo: '{titulo}'")
+@given("el usuario ingresa el título: '{titulo}'")
 def step_impl(context, titulo):
 	context.titulo = titulo
 
 
-@when("busque la pelicula por {criterio}")
+@when("busque la películas por título {criterio}")
 def step_impl(context, criterio):
 	if(criterio == 'titulo'):
 		resultado, mensaje = get_pelicula_titulo(context.peliculas, context.titulo)
@@ -34,20 +35,18 @@ def step_impl(context, criterio):
 		context.mensaje = mensaje
 
 
-@then("obtendrá {total} peliculas que coincidan")
+@then("obtendrá {total} películas que coincidan")
 def step_impl(context, total):
 	assert len(context.resultado) == int(total)
 
 
-@then("los titulos de estas peliculas son")
+@then("los título de estas películas son")
 def step_impl(context):
 	son_peliculas_esperadas = True
 	peliculas_esperadas = []
 	for row in context.table:
 		peliculas_esperadas.append(row['TITULO'])
-		print(peliculas_esperadas)
 	for pelicula in context.resultado:
-		print(pelicula.titulo)
 		if pelicula.titulo not in peliculas_esperadas:
 			print("No estan " + pelicula.titulo)
 			son_peliculas_esperadas = False
@@ -55,4 +54,6 @@ def step_impl(context):
 
 @then("obtiene el siguiente mensaje '{mensaje}'")
 def step_impl(context, mensaje):
+	print(mensaje)
+	print(context.mensaje)
 	assert context.mensaje == mensaje
