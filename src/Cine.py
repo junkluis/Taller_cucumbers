@@ -6,7 +6,7 @@ def get_pelicula_titulo(lista_peliculas, titulo):
 	if len(busqueda)>0:
 		mensaje = 'Se encontraron '+str(len(busqueda))+' película(s) que contienen en su título la palabra: ' + titulo
 	else:
-		mensaje = 'No se encontro ninguna película con el título especificado.'
+		mensaje = 'No se encontró ninguna película con el título especificado.'
 	return busqueda, mensaje
 
 
@@ -17,7 +17,7 @@ def get_pelicula_raiting(lista_peliculas, raiting):
 	if len(busqueda)>0:
 		mensaje = 'Se encontraron '+str(len(busqueda))+' película(s).'
 	else:
-		mensaje = 'No se encontro ninguna película.'
+		mensaje = 'No se encontró ninguna película disponible para esa audiencia.'
 	return busqueda, mensaje
 
 
@@ -28,7 +28,7 @@ def get_pelicula_idiomas(lista_peliculas, idioma):
 	if len(busqueda)>0:
 		mensaje = 'Se encontraron '+str(len(busqueda))+' película(s).'
 	else:
-		mensaje = 'No se encontro ninguna película.'
+		mensaje = 'No se encontró ninguna película en '+idioma
 	return busqueda, mensaje
 
 
@@ -39,7 +39,7 @@ def get_pelicula_elenco(lista_peliculas, lista_actores):
 	if len(busqueda)>0:
 		mensaje = 'Se encontraron '+str(len(busqueda))+' película(s).'
 	else:
-		mensaje = 'No se encontro ninguna película.'
+		mensaje = 'No se encontró ninguna película con los actores en la lista.'
 	return busqueda, mensaje
 
 
@@ -48,7 +48,7 @@ def get_pelicula_fecha_estreno(lista_peliculas, anio_inicio=1800, anio_fin=2020)
 	if len(busqueda)>0:
 		mensaje = 'Se encontraron '+str(len(busqueda))+' película(s).'
 	else:
-		mensaje = 'No se encontro ninguna película.'
+		mensaje = 'Ninguna pelicula fue estrenada durante los año ' + str(anio_inicio) + " y " + "str(anio_fin)"
 	return busqueda, mensaje
 
 

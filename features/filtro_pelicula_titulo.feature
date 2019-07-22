@@ -30,5 +30,5 @@ Característica: Buscar películas por su título
       Dada el usuario ingresa el título: 'xyz'
       Cuando busque la películas por título
       Entonces obtendrá 0 películas que coincidan
-      Y obtiene el siguiente mensaje 'No se encontro ninguna película con el título especificado.'
+      Y obtiene el siguiente mensaje 'No se encontró ninguna película con el título especificado.'
 
