@@ -25,7 +25,7 @@ Característica: Buscar películas por su título
       | TITULO        |
       | Halloween     |
       | Halloween II  |
-      Y obtiene el siguiente mensaje 'Se encontraron 2 película(s) que contienen en su título la palabra: Ha'
+      Y obtiene el siguiente mensaje 'Se encontraron 2 película(s) que contienen en su título la palabra: Hal'
 
 
   @peliculasPorTítulo
@@ -33,5 +33,5 @@ Característica: Buscar películas por su título
       Dada el usuario ingresa el título: 'xyz'
       Cuando busque la películas por título
       Entonces obtendrá 0 películas que coincidan
-      Y obtiene el siguiente mensaje 'Se encontraron 2 película(s) que contienen en su título la palabra: Ha'
+      Y obtiene el siguiente mensaje 'No se encontro ninguna película con el título especificado.'
 

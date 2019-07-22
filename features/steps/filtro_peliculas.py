@@ -29,8 +29,9 @@ def step_impl(context, titulo):
 
 @when("busque la películas por {criterio}")
 def step_impl(context, criterio):
-	if(criterio == 'titulo'):
+	if(criterio == 'título'):
 		resultado, mensaje = get_pelicula_titulo(context.peliculas, context.titulo)
+		print(resultado)
 		context.resultado = resultado
 		context.mensaje = mensaje
 
