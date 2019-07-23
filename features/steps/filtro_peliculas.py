@@ -46,7 +46,10 @@ def step_impl(context, criterio):
 		context.resultado = resultado
 		context.mensaje = mensaje
 	if (criterio == 'año de estreno'):
-		resultado, mensaje = get_pelicula_fecha_estreno(context.peliculas, context.anio_inicio, context.anio_fin)
+		if context.anio == '':
+			resultado, mensaje = get_pelicula_fecha_estreno(context.peliculas)
+		else:
+			resultado, mensaje = get_pelicula_fecha_estreno(context.peliculas, context.anio_inicio, context.anio_fin)
 		print(resultado)
 		context.resultado = resultado
 		context.mensaje = mensaje
