@@ -2,13 +2,14 @@
 
 ## Instrucciones:
 
-1. Crear una rama con su nombre completo ejemplo:
+1. Aceptar la invitación como colaborador al repositorio
+2. Crear una rama con su nombre completo ejemplo:
 
 		git checkout -b [nombre_apellido1_apellido2]
 
 2. Cree los archivos de prueba en la carpeta 'features', junto al código de prueba en la carpeta 'features/steps'.
 
-3. Asegurése que se ejecuten las pruebas correctamente. 
+3. Asegúrese que se ejecuten las pruebas correctamente. 
    Para ejecutar las pruebas localmente utilice el siguiente comando en el cmd:
 
 		pip install behave

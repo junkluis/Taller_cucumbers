@@ -11,17 +11,63 @@ if __name__ == '__main__':
 
 	lista_peliculas = [movie_A, movie_B, movie_C, movie_D]
 
-	resultado = get_pelicula_titulo(lista_peliculas, "a")
-	print(resultado)
+	resultado, msj = get_pelicula_titulo(lista_peliculas, "a")
+	print(msj)
+	for x in resultado:
+		print(x)
+	print("-"*20)
 
-	resultado = get_pelicula_raiting(lista_peliculas, ["R", "PG"])
-	print(resultado)
+	resultado, msj, error = get_pelicula_rating(lista_peliculas, ["R", "PG"])
+	print(msj)
+	for x in resultado:
+		print(x)
+	print("-"*20)
 
-	resultado = get_pelicula_idiomas(lista_peliculas, "español")
-	print(resultado)
+	resultado, msj, error = get_pelicula_rating(lista_peliculas, ["R", "PG", "RC1"])
+	print(msj)
+	print(error)
+	for x in resultado:
+		print(x)
+	print("-"*20)
 
-	resultado = get_pelicula_elenco(lista_peliculas, ["Jamie Bell", "Andy Serkis"])
-	print(resultado)
+	resultado, msj, error = get_pelicula_rating(lista_peliculas, ["NC-17"])
+	print(msj)
+	for x in resultado:
+		print(x)
+	print("-"*20)
 
-	resultado = get_pelicula_fecha_estreno(lista_peliculas, 1999, 2012 )
-	print(resultado)
+	resultado, msj = get_pelicula_idiomas(lista_peliculas, "español")
+	print(msj)
+	for x in resultado:
+		print(x)
+	print("-"*20)
+
+	resultado, msj = get_pelicula_idiomas(lista_peliculas, "chino")
+	print(msj)
+	for x in resultado:
+		print(x)
+	print("-"*20)
+
+	resultado, msj = get_pelicula_fecha_estreno(lista_peliculas, 1999, 2012 )
+	print(msj)
+	for x in resultado:
+		print(x)
+	print("-"*20)
+
+	resultado, msj = get_pelicula_fecha_estreno(lista_peliculas)
+	print(msj)
+	for x in resultado:
+		print(x)
+	print("-"*20)
+
+	resultado, msj = get_pelicula_fecha_estreno(lista_peliculas, 2020, 1999)
+	print(msj)
+	for x in resultado:
+		print(x)
+	print("-"*20)
+
+	resultado, msj = get_pelicula_fecha_estreno(lista_peliculas, 2020, 2021)
+	print(msj)
+	for x in resultado:
+		print(x)
+	print("-"*20)

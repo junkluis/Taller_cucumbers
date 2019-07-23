@@ -1,7 +1,7 @@
 class Pelicula(object):
 	"""Clase Pelicula"""
 
-	def __init__(self, titulo, director, elenco, genero, idioma, estreno, raiting):
+	def __init__(self, titulo, director, elenco, genero, idioma, estreno, rating):
 		
 		self.titulo = titulo
 		self.director = director
@@ -9,7 +9,7 @@ class Pelicula(object):
 		self.genero = genero
 		self.idioma = idioma
 		self.estreno = estreno
-		self.raiting = raiting
+		self.rating = rating
 
 	def __str__(self):
 		return self.titulo
