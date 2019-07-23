@@ -26,6 +26,21 @@ def step_impl(context):
 def step_impl(context, titulo):
 	context.titulo = titulo
 
+@given("el usuario ingresa el rating : '{ratings}'")
+def step_impl(context, ratings):
+	context.rating = ratings
+
+@when("busque la películas por {ratings}")
+def step_impl(context, ratings):
+    peliculas = context.peliculas
+    listado = []
+    for pelicula in peliculas:
+        encontro = False
+        for rating in ratings:
+            if(pelicula.rating == rating):
+                encontro = True
+        if(encontro):
+            listado.append(pelicula)
 
 @when("busque la películas por {criterio}")
 def step_impl(context, criterio):
