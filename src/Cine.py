@@ -11,9 +11,10 @@ def get_pelicula_titulo(lista_peliculas, titulo):
 
 
 def get_pelicula_rating(lista_peliculas, ratings):
-	"""Busqueda de peliculas por raiting"""
+	"""Busqueda de peliculas por rating"""
 	valores_permitidos = ["G", "PG", "PG-13", "R", "NC-17" ]
 	valores_no_permitidos = []
+	ratings = ratings.split(",")
 	for rate in ratings:
 		if rate not in valores_permitidos:
 			valores_no_permitidos.append(rate)
@@ -33,7 +34,7 @@ def get_pelicula_rating(lista_peliculas, ratings):
 
 
 def get_pelicula_idiomas(lista_peliculas, idioma):
-	"""Busqueda de peliculas por raiting"""
+	"""Busqueda de peliculas por idioma"""
 
 	busqueda = list(filter(lambda x: idioma in x.idioma, lista_peliculas))
 	if len(busqueda)>0:
