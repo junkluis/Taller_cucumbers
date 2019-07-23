@@ -59,7 +59,7 @@ def get_pelicula_fecha_estreno(lista_peliculas, anio_inicio=1900, anio_fin=2020)
 		mensaje = 'El año inicial no puede ser mayor que el año final de búsqueda.'
 		busqueda = []
 	else:
-		busqueda = list(filter(lambda x: anio_inicio <= x.estreno <= anio_fin, lista_peliculas))
+		busqueda = list(filter(lambda x: anio_inicio <= int(x.estreno) <= anio_fin, lista_peliculas))
 		if len(busqueda)>0:
 			mensaje = 'Se encontraron '+str(len(busqueda))+' película(s).'
 		else:
