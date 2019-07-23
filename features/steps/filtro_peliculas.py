@@ -16,7 +16,7 @@ def step_impl(context):
 
 		elenco = []
 		idiomas = []
-		pelicula = Pelicula(row['TITULO'], row['DIRECTOR'], row['ELENCO'].split(","), row['GENERO'], row['IDIOMAS'].split(","), row['ESTRENO'], row['RAITING'])
+		pelicula = Pelicula(row['TITULO'], row['DIRECTOR'], row['ELENCO'].split(","), row['GENERO'], row['IDIOMAS'].split(","), int(row['ESTRENO']), row['RAITING'])
 		lista_peliculas.append(pelicula)
 
 	context.peliculas = lista_peliculas
@@ -32,8 +32,13 @@ def step_impl(context, idioma):
 
 @given("el usuario ingresa un rango de año: ({inicial}, {final})")
 def step_impl(context, inicial, final):
-	context.inicial = inicial
-	context.final = final
+	context.inicial = int(inicial)
+	context.final = int(final)
+
+@given("el usuario no ingresa ningún rango de año")
+def step_imp(context):
+	context.inicial = None
+	context.final = None
 
 @when("busque la películas por {criterio}")
 def step_impl(context, criterio):
@@ -48,7 +53,10 @@ def step_impl(context, criterio):
 		context.resultado = resultado
 		context.mensaje = mensaje
 	elif (criterio == 'año de estreno'):
-		resultado, mensaje = get_pelicula_fecha_estreno(context.peliculas, context.inicial, context.final)
+		if (context.inicial == None and context.final == None):
+			resultado, mensaje = get_pelicula_fecha_estreno(context.peliculas)
+		else:
+			resultado, mensaje = get_pelicula_fecha_estreno(context.peliculas, context.inicial, context.final)
 		print(resultado)
 		context.resultado = resultado
 		context.mensaje = mensaje
