@@ -26,6 +26,9 @@ def step_impl(context):
 def step_impl(context, titulo):
 	context.titulo = titulo
 
+@given("el usuario ingresa el rating: '{rating}'")
+def step_impl(context, titulo):
+	context.rating = rating.split(,)
 
 @when("busque la películas por {criterio}")
 def step_impl(context, criterio):
