@@ -17,5 +17,5 @@ Característica: Buscar películas por rating
       | Ant-Man (película) |
       | Halloween          |
       | Halloween II       |
-  Y obtiene el siguiente mensaje 'Se encontraron 2 película(s) que contienen un rating'
+  Y obtiene el siguiente mensaje 'Se encontraron 1 película(s).'
 
