@@ -26,6 +26,9 @@ def step_impl(context):
 def step_impl(context, titulo):
 	context.titulo = titulo
 
+@given("el usuario ingresa un grupo de RAITING: '{raiting}'")
+def step_impl(context, raiting):
+	context.RAITING = raiting.split(",")
 
 @when("busque la películas por {criterio}")
 def step_impl(context, criterio):
@@ -34,6 +37,13 @@ def step_impl(context, criterio):
 		print(resultado)
 		context.resultado = resultado
 		context.mensaje = mensaje
+	if(criterio=='raiting'):
+		print(context.RAITING)
+		resultado,mensaje,error= get_pelicula_rating(context.peliculas,context.RAITING)
+		print(resultado)
+		context.resultado = resultado
+		context.mensaje = mensaje
+	
 
 
 @then("obtendrá {total} películas que coincidan")
