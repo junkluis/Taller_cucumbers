@@ -26,12 +26,29 @@ def step_impl(context):
 def step_impl(context, titulo):
 	context.titulo = titulo
 
+@given("el usuario ingresa el idioma: '{idioma}'")
+def step_impl(context, idioma):
+	context.idioma = idioma
+
+@given("el usuario ingresa una lista de ratings: '{ratings}'")
+def step_impl(context, ratings):
+	context.ratings = ratings.split(",")
 
 @when("busque la películas por {criterio}")
 def step_impl(context, criterio):
+	context.criterio = criterio
 	if(criterio == 'título'):
 		resultado, mensaje = get_pelicula_titulo(context.peliculas, context.titulo)
 		print(resultado)
+		context.resultado = resultado
+		context.mensaje = mensaje
+	if(criterio == 'ratings'):
+		resultado, mensaje, error = get_pelicula_rating(context.peliculas, context.ratings)
+		context.resultado = resultado
+		context.mensaje = mensaje
+		context.error = error
+	if(criterio == 'idioma'):
+		resultado, mensaje = get_pelicula_idiomas(context.peliculas, context.idioma)
 		context.resultado = resultado
 		context.mensaje = mensaje
 
@@ -55,6 +72,12 @@ def step_impl(context):
 
 @then("obtiene el siguiente mensaje '{mensaje}'")
 def step_impl(context, mensaje):
-	print(mensaje)
-	print(context.mensaje)
-	assert context.mensaje == mensaje
+	if(context.criterio == 'título' or context.criterio == 'idioma'):
+		assert context.mensaje == mensaje
+	if(context.criterio == 'ratings'):
+		if context.error:
+			print(mensaje)
+			print(context.error)
+			assert context.error == mensaje
+		else:
+			assert context.mensaje == mensaje
