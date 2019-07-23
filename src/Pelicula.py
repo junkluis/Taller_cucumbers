@@ -9,7 +9,7 @@ class Pelicula(object):
 		self.genero = genero
 		self.idioma = idioma
 		self.estreno = estreno
-		self.rating = rating
+		self.raiting = rating
 
 	def __str__(self):
 		return self.titulo
