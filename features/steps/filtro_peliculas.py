@@ -77,3 +77,9 @@ def step_impl(context, mensaje):
 	print(mensaje)
 	print(context.mensaje)
 	assert context.mensaje == mensaje
+
+@then("obtiene el siguiente error '{error}'")
+def step_impl(context, error):
+	print(error)
+	print(context.error)
+	assert context.error == error
