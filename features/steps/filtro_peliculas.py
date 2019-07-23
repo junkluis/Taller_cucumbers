@@ -13,7 +13,6 @@ def step_impl(context):
 	lista_peliculas = []
 
 	for row in context.table:
-
 		elenco = []
 		idiomas = []
 		pelicula = Pelicula(row['TITULO'], row['DIRECTOR'], row['ELENCO'].split(","), row['GENERO'], row['IDIOMAS'].split(","), row['ESTRENO'], row['RAITING'])
@@ -39,7 +38,6 @@ def step_impl(context, criterio):
 	context.criterio = criterio
 	if(criterio == 'título'):
 		resultado, mensaje = get_pelicula_titulo(context.peliculas, context.titulo)
-		print(resultado)
 		context.resultado = resultado
 		context.mensaje = mensaje
 	if(criterio == 'ratings'):
@@ -72,12 +70,12 @@ def step_impl(context):
 
 @then("obtiene el siguiente mensaje '{mensaje}'")
 def step_impl(context, mensaje):
+	print(mensaje)
+	print(context.mensaje)
 	if(context.criterio == 'título' or context.criterio == 'idioma'):
 		assert context.mensaje == mensaje
 	if(context.criterio == 'ratings'):
 		if context.error:
-			print(mensaje)
-			print(context.error)
 			assert context.error == mensaje
 		else:
 			assert context.mensaje == mensaje
