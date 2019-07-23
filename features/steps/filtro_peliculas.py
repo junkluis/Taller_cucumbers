@@ -35,6 +35,12 @@ def step_impl(context, criterio):
 		context.resultado = resultado
 		context.mensaje = mensaje
 
+	if(criterio == 'rating'):
+		resultado, mensaje, error = get_pelicula_rating(context.peliculas, context.rating)
+		print(resultado)
+		context.resultado = resultado
+		context.mensaje = mensaje
+		context.error = error
 
 @then("obtendrá {total} películas que coincidan")
 def step_impl(context, total):
