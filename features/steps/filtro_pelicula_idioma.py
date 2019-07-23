@@ -6,6 +6,7 @@ from src.Cine import *
 def before_scenario(context, scenario):
 	context = {}
 
+
 @given("el usuario ingresa el idioma: '{idioma}'")
 def step_impl(context, idioma):
 	context.idioma = idioma
