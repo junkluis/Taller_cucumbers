@@ -40,6 +40,11 @@ def step_imp(context):
 	context.inicial = None
 	context.final = None
 
+@given("el usuario ingresa un grupo de ratings: {ratings}")
+def step_imp(context, ratings):
+	ratings = [ rate.strip() for rate in ratings.split(",") ]
+	context.ratings = ratings
+
 @when("busque la películas por {criterio}")
 def step_impl(context, criterio):
 	if(criterio == 'título'):
@@ -47,6 +52,12 @@ def step_impl(context, criterio):
 		print(resultado)
 		context.resultado = resultado
 		context.mensaje = mensaje
+	elif (criterio == 'rating'):
+		resultado, mensaje, error = get_pelicula_rating(context.peliculas, context.ratings)
+		print(resultado)
+		context.resultado = resultado
+		context.mensaje = mensaje
+		context.error = error
 	elif (criterio == 'idioma'):
 		resultado, mensaje = get_pelicula_idiomas(context.peliculas, context.idioma)
 		print(resultado)
@@ -83,3 +94,9 @@ def step_impl(context, mensaje):
 	print(mensaje)
 	print(context.mensaje)
 	assert context.mensaje == mensaje
+
+@then("obtiene el siguiente error: '{error}'")
+def step_impl(context, error):
+	print(error)
+	print(context.error)
+	assert context.error == error
