@@ -32,8 +32,8 @@ def step_impl(context, idioma):
 
 @given("el usuario ingresa un rango de año: ({inicial}, {final})")
 def step_impl(context, inicial, final):
-	context.inicial = int(inicial)
-	context.final = int(final)
+	context.inicial = inicial
+	context.final = final
 
 @when("busque la películas por {criterio}")
 def step_impl(context, criterio):
