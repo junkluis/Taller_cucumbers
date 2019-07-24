@@ -1,6 +1,6 @@
 # language: es
 
-Característica: Buscar películas por rango de años de estreno
+Característica: Filtrar películas por años de estreno
 
   @peliculasPorAno
   Escenario: Filtrar películas por rango de años de estreno, con resultados
@@ -10,12 +10,12 @@ Característica: Buscar películas por rango de años de estreno
      | Halloween                  | John Carpenter   | Donald Pleasence, Jamie Lee Curtis, P. J. Soles  | terror       | ingles, aleman, espanol  | 1978     | R         |
      | Halloween II               | John Carpenter   | Donald Pleasence, Jamie Lee Curtis, P. J. Soles  | terror       | ingles, aleman, espanol  | 1081     | R         |
      | American Psycho            | Mary Harron      | Christian Bale, Willem Dafoe, Jared Leto         | terror       | aleman                   | 2000     | NC-17     |
-      Dada el usuario ingresa el rango: '1999,2016' 
+      Dada el usuario ingresa el rango: '1978,2001' 
       Cuando busque la películas por ano
       Entonces obtendrá 2 películas que coincidan
       Y los título de estas películas son
       | TITULO        |
-      | Ant-Man (película)     |
+      | Halloween    |
       | American Psycho            |
       Y obtiene el siguiente mensaje 'Se encontraron 2 película(s).'
 
@@ -45,7 +45,7 @@ Característica: Buscar películas por rango de años de estreno
      | Halloween                  | John Carpenter   | Donald Pleasence, Jamie Lee Curtis, P. J. Soles  | terror       | ingles, aleman, espanol  | 1978     | R         |
      | Halloween II               | John Carpenter   | Donald Pleasence, Jamie Lee Curtis, P. J. Soles  | terror       | ingles, aleman, espanol  | 1081     | R         |
      | American Psycho            | Mary Harron      | Christian Bale, Willem Dafoe, Jared Leto         | terror       | aleman                   | 2000     | NC-17     |
-      Dada el usuario ingresa el rango: '2016,2000'  
+      Dada el usuario ingresa el rango: '2016,2003'  
       Cuando busque la películas por ano
       Entonces obtendrá 0 películas que coincidan
       Y obtiene el siguiente mensaje 'El año inicial no puede ser mayor que el año final de búsqueda.'
