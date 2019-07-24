@@ -34,6 +34,25 @@ def step_impl(context, criterio):
 		print(resultado)
 		context.resultado = resultado
 		context.mensaje = mensaje
+	if (criterio == 'rating'):
+		resultado, mensaje, error = get_pelicula_rating(context.peliculas, context.ratings)
+		print(resultado)
+		context.resultado = resultado
+		context.mensaje = mensaje
+		context.error = error
+	if (criterio == 'idioma'):
+		resultado, mensaje = get_pelicula_idiomas(context.peliculas, context.idioma)
+		print(resultado)
+		context.resultado = resultado
+		context.mensaje = mensaje
+	if (criterio == 'año de estreno'):
+		if context.anio == '':
+			resultado, mensaje = get_pelicula_fecha_estreno(context.peliculas,'1900','2600')
+		else:
+			resultado, mensaje = get_pelicula_fecha_estreno(context.peliculas, context.anio_inicio, context.anio_fin)
+		print(resultado)
+		context.resultado = resultado
+		context.mensaje = mensaje
 
 
 @then("obtendrá {total} películas que coincidan")
@@ -58,3 +77,9 @@ def step_impl(context, mensaje):
 	print(mensaje)
 	print(context.mensaje)
 	assert context.mensaje == mensaje
+
+@then("obtiene el siguiente error '{error}'")
+def step_impl(context, error):
+	print(error)
+	print(context.error)
+	assert context.error == error
