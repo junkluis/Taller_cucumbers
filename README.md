@@ -15,7 +15,7 @@
 		pip install behave
 		behave
    
-4. Una vez que corra las pruebas exitosamente, suba los cambios en su rama.
-		git push origin [nombre_apellido1_apellido2]
+4. Una vez que corra las pruebas exitosamente, suba los cambios en su rama y mire en Travis los resultados.
 
+		git push origin [nombre_apellido1_apellido2]
 5. Cree una nueva tarea en Jenkins y genere un reporte de pruebas cucumber.
