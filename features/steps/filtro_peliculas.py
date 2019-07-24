@@ -50,7 +50,7 @@ def step_impl(context, criterio):
 		context.resultado = resultado
 		context.mensaje = error if error is not None else mensaje
 	elif criterio == 'anio':
-		if len(context.anios) == 2:
+		if context.anios is not None:
 			resultado, mensaje = get_pelicula_fecha_estreno(context.peliculas,
 															context.anios[0],
 															context.anios[1])
@@ -95,3 +95,7 @@ def step_impl(context, ratings):
 def step_impl(context, rango):
 	anios = rango.split('-')
 	context.anios = anios
+	
+@given("el usuario no ingresa un rango de anios")
+def step_impl(context):
+	context.anios = None

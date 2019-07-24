@@ -54,7 +54,7 @@ def get_pelicula_elenco(lista_peliculas, lista_actores):
 	return busqueda, mensaje
 '''
 
-def get_pelicula_fecha_estreno(lista_peliculas, anio_inicio=1900, anio_fin=2020):
+def get_pelicula_fecha_estreno(lista_peliculas, anio_inicio='1900', anio_fin='2020'):
 	if(anio_inicio > anio_fin):
 		mensaje = 'El año inicial no puede ser mayor que el año final de búsqueda.'
 		busqueda = []
@@ -63,7 +63,7 @@ def get_pelicula_fecha_estreno(lista_peliculas, anio_inicio=1900, anio_fin=2020)
 		if len(busqueda)>0:
 			mensaje = 'Se encontraron '+str(len(busqueda))+' película(s).'
 		else:
-			mensaje = 'Ninguna pelicula fue estrenada durante los año ' + str(anio_inicio) + " y " + str(anio_fin)
+			mensaje = 'Ninguna pelicula fue estrenada durante los años ' + str(anio_inicio) + " y " + str(anio_fin)
 	return busqueda, mensaje
 
 
