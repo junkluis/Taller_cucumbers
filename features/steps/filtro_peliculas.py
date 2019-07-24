@@ -16,7 +16,7 @@ def step_impl(context):
 
 		elenco = []
 		idiomas = []
-		pelicula = Pelicula(row['TITULO'], row['DIRECTOR'], row['ELENCO'].split(","), row['GENERO'], row['IDIOMAS'].split(","), row['ESTRENO'], row['RAITING'])
+		pelicula = Pelicula(row['TITULO'], row['DIRECTOR'], row['ELENCO'].split(","), row['GENERO'], row['IDIOMAS'].split(","), int(row['ESTRENO']), row['RAITING'])
 		lista_peliculas.append(pelicula)
 
 	context.peliculas = lista_peliculas
@@ -26,6 +26,24 @@ def step_impl(context):
 def step_impl(context, titulo):
 	context.titulo = titulo
 
+@given("el usuario ingresa el idioma: '{idioma}'")
+def step_impl(context, idioma):
+	context.idioma = idioma
+
+@given("el usuario ingresa un rango de año: ({inicial}, {final})")
+def step_impl(context, inicial, final):
+	context.inicial = int(inicial)
+	context.final = int(final)
+
+@given("el usuario no ingresa ningún rango de año")
+def step_imp(context):
+	context.inicial = None
+	context.final = None
+
+@given("el usuario ingresa un grupo de ratings: {ratings}")
+def step_imp(context, ratings):
+	ratings = [ rate.strip() for rate in ratings.split(",") ]
+	context.ratings = ratings
 
 @when("busque la películas por {criterio}")
 def step_impl(context, criterio):
@@ -34,26 +52,25 @@ def step_impl(context, criterio):
 		print(resultado)
 		context.resultado = resultado
 		context.mensaje = mensaje
-	if (criterio == 'rating'):
+	elif (criterio == 'rating'):
 		resultado, mensaje, error = get_pelicula_rating(context.peliculas, context.ratings)
 		print(resultado)
 		context.resultado = resultado
 		context.mensaje = mensaje
 		context.error = error
-	if (criterio == 'idioma'):
+	elif (criterio == 'idioma'):
 		resultado, mensaje = get_pelicula_idiomas(context.peliculas, context.idioma)
 		print(resultado)
 		context.resultado = resultado
 		context.mensaje = mensaje
-	if (criterio == 'año de estreno'):
-		if context.anio == '':
-			resultado, mensaje = get_pelicula_fecha_estreno(context.peliculas,'1900','2600')
+	elif (criterio == 'año de estreno'):
+		if (context.inicial == None and context.final == None):
+			resultado, mensaje = get_pelicula_fecha_estreno(context.peliculas)
 		else:
-			resultado, mensaje = get_pelicula_fecha_estreno(context.peliculas, context.anio_inicio, context.anio_fin)
+			resultado, mensaje = get_pelicula_fecha_estreno(context.peliculas, context.inicial, context.final)
 		print(resultado)
 		context.resultado = resultado
 		context.mensaje = mensaje
-
 
 @then("obtendrá {total} películas que coincidan")
 def step_impl(context, total):
@@ -78,7 +95,7 @@ def step_impl(context, mensaje):
 	print(context.mensaje)
 	assert context.mensaje == mensaje
 
-@then("obtiene el siguiente error '{error}'")
+@then("obtiene el siguiente error: '{error}'")
 def step_impl(context, error):
 	print(error)
 	print(context.error)
