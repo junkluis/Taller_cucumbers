@@ -44,5 +44,5 @@ Característica: Buscar películas por su rating
       Dada el usuario ingresa el rating: 'C1'
       Cuando busque la películas por rating
       Entonces obtendrá 0 películas que coincidan
-      Y obtiene el siguiente mensaje 'Los ratings [C1] no son una opción disponible para búsqueda.'
+      Y obtiene el siguiente mensaje 'Los ratings ['C1'] no son una opción disponible para búsqueda.'
 
