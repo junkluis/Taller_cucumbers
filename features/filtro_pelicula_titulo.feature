@@ -32,23 +32,9 @@ Característica: Buscar películas por su título
       Entonces obtendrá 0 películas que coincidan
       Y obtiene el siguiente mensaje 'No se encontró ninguna película con el título especificado.'
 
-  @peliculasPorRating
-  Escenario: Filtrar películas que tienen rating 'R'
-    Dado un conjunto de películas
-    | TITULO                     | DIRECTOR         | ELENCO                                           | GENERO       | IDIOMAS                  | ESTRENO  | RAITING   |
-     | Ant-Man (película)         | Peyton Reed      | Paul Rudd, Evangeline Lilly, Corey Stoll         | superheroes  | ingles                   | 2015     | R     |
-     | Halloween                  | John Carpenter   | Donald Pleasence, Jamie Lee Curtis, P. J. Soles  | terror       | ingles, aleman, espanol  | 1978     | R         |
-     | Halloween II               | John Carpenter   | Donald Pleasence, Jamie Lee Curtis, P. J. Soles  | terror       | ingles, aleman, espanol  | 1081     | R         |
-     | American Psycho            | Mary Harron      | Christian Bale, Willem Dafoe, Jared Leto         | terror       | aleman                   | 2000     | NC-17     |
 
 
-    Dada el usuario ingresa el rating: 'R'
-      Cuando busque la películas por raiting
-      Entonces obtendrá 3 películas que coincidan
-       Y los título de estas películas son
-      | TITULO        |
-      | Ant-Man       |
-      | Halloween     |
-      | Halloween II  |
-     
-       Y obtiene el siguiente mensaje 'Se encontraron 3 película(s) que contienen en su t la palabra: R'
+
+
+
+
