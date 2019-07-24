@@ -71,6 +71,7 @@ def step_impl(context, criterio):
 			context.resultado = resultado
 			context.mensaje = mensaje
 
+
 @then("obtendrá {total} películas que coincidan")
 def step_impl(context, total):
 	assert len(context.resultado) == int(total)
@@ -87,6 +88,7 @@ def step_impl(context):
 			print("No estan " + pelicula.titulo)
 			son_peliculas_esperadas = False
 	assert son_peliculas_esperadas is True
+
 
 @then("obtiene el siguiente mensaje '{mensaje}'")
 def step_impl(context, mensaje):
