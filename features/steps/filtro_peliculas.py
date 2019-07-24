@@ -53,9 +53,17 @@ def step_impl(context, criterio):
         context.mensaje = mensaje
         context.error = error
 
+    if criterio == 'idioma':
+        resultado, mensaje = get_pelicula_idiomas(context.peliculas, context.idioma)
+        print(resultado)
+        context.resultado = resultado
+        context.mensaje = mensaje
+
 
 @then("obtendrá {total} películas que coincidan")
 def step_impl(context, total):
+	print(len(context.resultado))
+	print(total)
 	assert len(context.resultado) == int(total)
 
 

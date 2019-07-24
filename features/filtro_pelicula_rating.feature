@@ -1,6 +1,6 @@
 # language: es
 
-Característica: Buscar películas por su título
+Característica: Buscar películas por su rating
 
   @peliculasPorRating
   Escenario: Filtrar películas que contienen rating tipo R
