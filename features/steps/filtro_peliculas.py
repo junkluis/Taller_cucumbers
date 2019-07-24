@@ -26,6 +26,25 @@ def step_impl(context):
 def step_impl(context, titulo):
 	context.titulo = titulo
 
+@given("el usuario ingresa una lista de rating: '{rating}'")
+def step_impl(context, rating):
+	context.rating = rating
+
+@given("el usuario ingresa el idioma: '{idioma}'")
+def step_imp(context, idioma):
+	context.idioma = idioma
+
+@given("el usuario ingresa el rango: '{rango}'")
+def step_impl(context, rango):
+	if rango:
+		rango_ = rango.split(",")
+		context.inicio = rango_[0]
+		context.fin = rango_[1]
+
+@given("el usuario ingresa el rango: ''")
+def step_impl(context):
+	context.inicio = None
+	context.fin = None	
 
 @when("busque la películas por {criterio}")
 def step_impl(context, criterio):
@@ -34,7 +53,24 @@ def step_impl(context, criterio):
 		print(resultado)
 		context.resultado = resultado
 		context.mensaje = mensaje
-
+	if(criterio == 'rating'):
+		resultado, mensaje, error = get_pelicula_rating(context.peliculas, context.rating)
+		context.resultado = resultado
+		context.mensaje = mensaje
+		context.error = error
+	if(criterio == 'idioma'):
+		resultado, mensaje = get_pelicula_idiomas(context.peliculas, context.idioma)
+		context.resultado = resultado
+		context.mensaje = mensaje
+	if(criterio == 'ano'):
+		if context.inicio and context.fin:
+			resultado, mensaje = get_pelicula_fecha_estreno(context.peliculas, context.inicio, context.fin)
+			context.resultado = resultado
+			context.mensaje = mensaje
+		else:
+			resultado, mensaje = get_pelicula_fecha_estreno(context.peliculas)
+			context.resultado = resultado
+			context.mensaje = mensaje
 
 @then("obtendrá {total} películas que coincidan")
 def step_impl(context, total):
@@ -58,3 +94,10 @@ def step_impl(context, mensaje):
 	print(mensaje)
 	print(context.mensaje)
 	assert context.mensaje == mensaje
+
+
+@then("obtuvo el siguiente error: '{error}'")
+def step_impl(context, error):
+	print(error)
+	print(context.error)
+	assert context.error == error

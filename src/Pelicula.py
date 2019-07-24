@@ -15,5 +15,5 @@ class Pelicula(object):
 		return self.titulo
 
 	def full_info(self):
-		movie_str = self.titulo + " | Director: " + self.director + " ("+ str(self.estreno) + ")" + " ["+ str(self.raiting) + "]" + " | Genero:  " +str( self.genero ) +"\nReparto: " + str(self.elenco) + "\nIdiomas: " + str(self.idioma)
+		movie_str = self.titulo + " | Director: " + self.director + " ("+ str(self.estreno) + ")" + " ["+ str(self.rating) + "]" + " | Genero:  " +str( self.genero ) +"\nReparto: " + str(self.elenco) + "\nIdiomas: " + str(self.idioma)
 		return movie_str
