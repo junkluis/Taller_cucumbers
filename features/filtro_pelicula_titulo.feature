@@ -27,8 +27,7 @@ Característica: Buscar películas por su título
      | El rey león                | Jon Favreau      | Donald Glover, John Oliver, Seth Rogen           | aventura     | ingles, espanol          | 2019     | G         |
      | Toy Story 3                | Josh Cooley      | Tom Hanks, Tim Allen, Joan Cusack                | animada      | ingles, aleman           | 2010     | G         |
      | Buscando a Nemo            | Andrew Stanton   | Albert Brooks, Ellen DeGeneres, Alexander Gould  | animada      | ingles, aleman           | 2003     | PG        |
-      Dada el usuario ingresa el título: 'xyz'
+      Dada el usuario ingresa el título: 'CSI'
       Cuando busque la películas por título
       Entonces obtendrá 0 películas que coincidan
       Y obtiene el siguiente mensaje 'No se encontró ninguna película con el título especificado.'
-
