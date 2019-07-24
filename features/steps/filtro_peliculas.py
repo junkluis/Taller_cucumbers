@@ -39,11 +39,23 @@ def step_impl(context, criterio):
 		context.resultado = resultado
 		context.mensaje = mensaje
 		context.error = error
-
+	elif(criterio == 'idioma'):
+		resultado, mensaje = get_pelicula_idiomas(context.peliculas, context.idioma)
+		context.resultado = resultado
+		context.mensaje = mensaje
+	elif(criterio=='fecha'):
+		if len(context.fechas) > 1:
+			resultado, mensaje = get_pelicula_fecha_estreno(context.peliculas, context.fechas[0], context.fechas[1])
+		else:
+			resultado, mensaje = get_pelicula_fecha_estreno(context.peliculas)
+		context.resultado = resultado
+		context.mensaje = mensaje
 
 
 @then("obtendrá {total} películas que coincidan")
 def step_impl(context, total):
+	print(context.resultado)
+	print(total)
 	assert len(context.resultado) == int(total)
 
 
@@ -61,8 +73,6 @@ def step_impl(context):
 
 @then("obtiene el siguiente mensaje '{mensaje}'")
 def step_impl(context, mensaje):
-	print(mensaje)
-	print(context.mensaje)
 	assert context.mensaje == mensaje
 
 
@@ -74,3 +84,15 @@ def step_impl(context, rating):
 @then("me da el siguiente mensaje de error: '{mensaje}'")
 def step_impl(context, mensaje):
 	assert context.error == mensaje
+
+
+#======================= idioma ==================
+@given("el usuario ingresa el idioma: '{idioma}'")
+def step_impl(context, idioma):
+	context.idioma = idioma
+
+#======================= fechas ==================
+@given("el usuario ingresa el rango de fechas: '{fechas}'")
+def step_impl(context, fechas):
+	dates = fechas.split("-")
+	context.fechas = dates
