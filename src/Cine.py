@@ -14,6 +14,7 @@ def get_pelicula_rating(lista_peliculas, ratings):
 	"""Busqueda de peliculas por raiting"""
 	valores_permitidos = ["G", "PG", "PG-13", "R", "NC-17" ]
 	valores_no_permitidos = []
+	ratings = ratings.split(",")
 	for rate in ratings:
 		if rate not in valores_permitidos:
 			valores_no_permitidos.append(rate)

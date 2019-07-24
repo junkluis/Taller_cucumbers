@@ -11,7 +11,6 @@ def before_scenario(context, scenario):
 @given("un conjunto de películas")
 def step_impl(context):
 	lista_peliculas = []
-
 	for row in context.table:
 
 		elenco = []
@@ -26,11 +25,40 @@ def step_impl(context):
 def step_impl(context, titulo):
 	context.titulo = titulo
 
+@given("el usuario ingresa el rating: '{rating}'")
+def step_impl(context, rating):
+	context.rating = rating
+
+@given("el usuario ingresa el idioma: '{idioma}'")
+def step_impl(context, idioma):
+	context.idioma = idioma
+
+@given("el usuario ingresa la fecha de estreno: '{estreno}'")
+def step_impl(context, estreno):
+	context.estreno = estreno
 
 @when("busque la películas por {criterio}")
 def step_impl(context, criterio):
 	if(criterio == 'título'):
 		resultado, mensaje = get_pelicula_titulo(context.peliculas, context.titulo)
+		print(resultado)
+		context.resultado = resultado
+		context.mensaje = mensaje
+	elif(criterio == 'rating'):
+		resultado, mensaje, error = get_pelicula_rating(context.peliculas, context.rating)
+		print(resultado)
+		context.resultado = resultado
+		if error==None:
+			context.mensaje = mensaje
+		else:
+			context.mensaje = error
+	elif(criterio == 'idioma'):
+		resultado, mensaje = get_pelicula_idiomas(context.peliculas, context.idioma)
+		print(resultado)
+		context.resultado = resultado
+		context.mensaje = mensaje
+	elif(criterio == 'estreno'):
+		resultado, mensaje = get_pelicula_fecha_estreno(context.peliculas, context.estreno)
 		print(resultado)
 		context.resultado = resultado
 		context.mensaje = mensaje
