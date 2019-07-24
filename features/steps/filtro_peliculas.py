@@ -30,11 +30,39 @@ def step_impl(context, titulo):
 def step_impl(context, rating):
 	context.rating = rating
 
+@given("el usuario debe ingresar un grupo de ratings: '{rating}'")
+def step_impl(context, rating):
+	context.rating = rating
+
+@given("el usuario debe ingresar un idioma: '{idioma}'")
+def step_impl(context, idioma):
+	context.idioma = idioma
+
+@given("el usuario ingresa el rango de anios: '{rango}'")
+def step_impl(context, rango):
+	anios = rango.split('-')
+	context.anios = anios
+
+
 @when("busque la películas por {criterio}")
 def step_impl(context, criterio):
 	if(criterio == 'título'):
 		resultado, mensaje = get_pelicula_titulo(context.peliculas, context.titulo)
 		print(resultado)
+		context.resultado = resultado
+		context.mensaje = mensaje
+	elif(criterio == 'idioma'):
+		resultado, mensaje = get_pelicula_idiomas(context.peliculas, context.idioma)
+		print(resultado)
+		context.resultado = resultado
+		context.mensaje = mensaje
+	elif criterio == 'anio':
+		if len(context.anios) == 2:
+			resultado, mensaje = get_pelicula_fecha_estreno(context.peliculas,
+															context.anios[0],
+															context.anios[1])
+		else:
+			resultado, mensaje = get_pelicula_fecha_estreno(context.peliculas)
 		context.resultado = resultado
 		context.mensaje = mensaje
 
@@ -45,11 +73,16 @@ def step_impl(context):
 	context.resultado = busqueda
 	context.mensaje = mensaje
 
+@when("busque películas por ratings")
+def step_impl(context):
+	busqueda, mensaje, error = get_pelicula_rating(context.peliculas, context.rating)
+	print(busqueda)
+	context.resultado = busqueda
+	context.mensaje = mensaje
 
 @then("obtendrá {total} películas que coincidan")
 def step_impl(context, total):
 	assert len(context.resultado) == int(total)
-
 
 @then("los título de estas películas son")
 def step_impl(context):
@@ -68,3 +101,9 @@ def step_impl(context, mensaje):
 	print(mensaje)
 	print(context.mensaje)
 	assert context.mensaje == mensaje
+
+@then("se mostrará el siguiente mensaje '{mensaje}'")
+def step_impl(context, mensaje):
+	print(mensaje)
+	print(context.mensaje)
+	assert mensaje == 'Los ratings M-17 no son una opción disponible para búsqueda.'
