@@ -10,4 +10,3 @@ def before_scenario(context, scenario):
 def step_impl(context, ratings):
 	context.ratings = ratings
 
-
