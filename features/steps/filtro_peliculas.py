@@ -26,29 +26,32 @@ def step_impl(context):
 def step_impl(context, titulo):
 	context.titulo = titulo
 
-@given("el usuario ingresa el rating : '{ratings}'")
+@given("el usuario ingresa el rating: '{ratings}'")
 def step_impl(context, ratings):
-	context.rating = ratings
+	context.rating = ratings.split(",")
 
-@when("busque la películas por {ratings}")
-def step_impl(context, ratings):
-    peliculas = context.peliculas
-    listado = []
-    for pelicula in peliculas:
-        encontro = False
-        for rating in ratings:
-            if(pelicula.rating == rating):
-                encontro = True
-        if(encontro):
-            listado.append(pelicula)
+@given("el usuario ingresa el idioma: '{idioma}'")
+def step_impl(context, idioma):
+	context.idioma = idioma
+
+@given("el usuario ingresa el estreno: '{anio}'")
+def step_impl(context, anio):
+	context.estreno = anio
 
 @when("busque la películas por {criterio}")
 def step_impl(context, criterio):
-	if(criterio == 'título'):
-		resultado, mensaje = get_pelicula_titulo(context.peliculas, context.titulo)
-		print(resultado)
-		context.resultado = resultado
-		context.mensaje = mensaje
+    if criterio == 'título':
+        resultado, mensaje = get_pelicula_titulo(context.peliculas, context.titulo)
+        print(resultado)
+        context.resultado = resultado
+        context.mensaje = mensaje
+    
+    if criterio == 'ratings':
+        resultado, mensaje, error = get_pelicula_rating(context.peliculas, context.rating)
+        print(resultado)
+        context.resultado = resultado
+        context.mensaje = mensaje
+        context.error = error
 
 
 @then("obtendrá {total} películas que coincidan")

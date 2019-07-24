@@ -3,7 +3,7 @@
 Característica: Buscar películas por su título
 
   @peliculasPorTítulo
-  Escenario: Filtrar películas que contienen en su título la palabra 'Hal'
+  Escenario: Filtrar películas que contienen en su título la palabras 'Hal'
       Dado un conjunto de películas
      | TITULO                     | DIRECTOR         | ELENCO                                           | GENERO       | IDIOMAS                  | ESTRENO  | RAITING   |
      | Ant-Man (película)         | Peyton Reed      | Paul Rudd, Evangeline Lilly, Corey Stoll         | superheroes  | ingles                   | 2015     | PG-13     |
