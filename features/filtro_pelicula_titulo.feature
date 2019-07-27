@@ -19,7 +19,6 @@ Característica: Buscar películas por su título
       | Halloween II  |
       Y obtiene el siguiente mensaje 'Se encontraron 2 película(s) que contienen en su título la palabra: Hal'
 
-
   @peliculasPorTítulo
   Escenario: Filtrar películas por título, sin encontrar resultado
       Dado un conjunto de películas
