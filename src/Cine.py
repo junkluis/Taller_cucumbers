@@ -54,7 +54,7 @@ def get_pelicula_elenco(lista_peliculas, lista_actores):
 	return busqueda, mensaje
 '''
 
-def get_pelicula_fecha_estreno(lista_peliculas, anio_inicio=1900, anio_fin=2020):
+def get_pelicula_fecha_estreno(lista_peliculas, anio_inicio="1900", anio_fin="2020"):
 	if(anio_inicio > anio_fin):
 		mensaje = 'El año inicial no puede ser mayor que el año final de búsqueda.'
 		busqueda = []

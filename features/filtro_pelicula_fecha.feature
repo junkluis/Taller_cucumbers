@@ -34,7 +34,7 @@ Característica: Buscar películas por su idioma
      | El rey león                | Jon Favreau      | Donald Glover, John Oliver, Seth Rogen           | aventura     | ingles, espanol          | 2019     | G         |
      | Toy Story 3                | Josh Cooley      | Tom Hanks, Tim Allen, Joan Cusack                | animada      | ingles, aleman           | 2010     | G         |
      | Buscando a Nemo            | Andrew Stanton   | Albert Brooks, Ellen DeGeneres, Alexander Gould  | animada      | ingles, aleman           | 2003     | PG        |
-      Dada el usuario ingresa el rango de fechas: '-'
+      Dada el usuario ingresa el rango de fechas: ';'
       Cuando busque la películas por fecha
       Entonces obtendrá 6 películas que coincidan
       Y los título de estas películas son

@@ -29,15 +29,15 @@ def step_impl(context, titulo):
 @given("el usuario ingresa el rating: '{rating}'")
 def step_impl(context, rating):
 	context.rating = rating.split(",")
-	
+
 @given("el usuario ingresa el idioma: '{idioma}'")
 def step_impl(context, idioma):
 	context.idioma = idioma
 
 @given("el usuario ingresa el rango de fechas: '{fechas}'")
 def step_impl(context, fechas):
-	dates = fechas.split("-")
-	context.fechas = dates
+	fechas = fechas.split("-")
+	context.fechas = fechas
 
 @when("busque la películas por {criterio}")
 def step_impl(context, criterio):
@@ -56,8 +56,8 @@ def step_impl(context, criterio):
 		resultado, mensaje = get_pelicula_idiomas(context.peliculas, context.idioma)
 		context.resultado = resultado
 		context.mensaje = mensaje
-	elif(criterio=='fecha'):
-		if len(context.fechas) > 1:
+	elif(criterio=='fecha'):		
+		if int(len(context.fechas)) != 1:			
 			resultado, mensaje = get_pelicula_fecha_estreno(context.peliculas, context.fechas[0], context.fechas[1])
 		else:
 			resultado, mensaje = get_pelicula_fecha_estreno(context.peliculas)
