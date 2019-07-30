@@ -26,11 +26,45 @@ def step_impl(context):
 def step_impl(context, titulo):
 	context.titulo = titulo
 
+@given("el usuario ingresa el rating: '{rating}'")
+def step_impl(context, rating):
+	context.rating = rating.split(',')
+
+@given("el usuario ingresa el idioma: '{idioma}'")
+def step_impl(context, idioma):
+	context.idioma = idioma
+
+@given("el usuario ingresa el año: '{anos}'")
+def step_impl(context, anos):
+	anos = anos.split(',')
+	context.ano_inicio = anos[0]
+	context.ano_fin = anos[1]
+
+@given("el usuario no ingresa ningún año")
+def step_impl(context):
+	context.ano_inicio = '1900'
+	context.ano_fin = '2020'
 
 @when("busque la películas por {criterio}")
 def step_impl(context, criterio):
 	if(criterio == 'título'):
 		resultado, mensaje = get_pelicula_titulo(context.peliculas, context.titulo)
+		print(resultado)
+		context.resultado = resultado
+		context.mensaje = mensaje
+	if(criterio == 'rating'):
+		resultado, mensaje, error = get_pelicula_rating(context.peliculas, context.rating)
+		print(resultado)
+		context.resultado = resultado
+		context.mensaje = mensaje
+		context.error = error
+	if(criterio == 'idioma'):
+		resultado, mensaje = get_pelicula_idiomas(context.peliculas, context.idioma)
+		print(resultado)
+		context.resultado = resultado
+		context.mensaje = mensaje
+	if(criterio == 'fecha'):
+		resultado, mensaje = get_pelicula_fecha_estreno(context.peliculas, context.ano_inicio, context.ano_fin)
 		print(resultado)
 		context.resultado = resultado
 		context.mensaje = mensaje
@@ -58,3 +92,9 @@ def step_impl(context, mensaje):
 	print(mensaje)
 	print(context.mensaje)
 	assert context.mensaje == mensaje
+
+@then("obtiene el siguiente error '{error}'")
+def step_impl(context, error):
+	print(error)
+	print(context.error)
+	assert context.error == error
