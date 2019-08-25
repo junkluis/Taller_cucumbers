@@ -13,7 +13,7 @@ Característica: Buscar películas por su título
       Dada el usuario ingresa el título: 'Hal'
       Cuando busque la películas por título
       Entonces obtendrá 2 películas que coincidan
-      Y los título de estas películas son
+      Y los títulos de estas películas son
       | TITULO        |
       | Halloween     |
       | Halloween II  |
