@@ -41,7 +41,7 @@ def step_impl(context, total):
 	assert len(context.resultado) == int(total)
 
 
-@then("los título de estas películas son")
+@then("los títulos de estas películas son")
 def step_impl(context):
 	son_peliculas_esperadas = True
 	peliculas_esperadas = []
