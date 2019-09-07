@@ -10,8 +10,8 @@ def before_scenario(context, scenario):
 def step_implement(context):
     lista_peliculas = []
 
-    for (row in context.table):
-        pelicula = Pelicula(row["TITULO"], row["GENERO"], row["IDIOMAS"], row["ESTRENO"], row["RAITING"])
+    for row in context.table:
+        pelicula = Pelicula(row["TITULO"], row["GENERO"], row["IDIOMAS"].split(","), row["ESTRENO"], row["RAITING"])
         peliculas.append(pelicula)
 
     context.lista_peliculas = lista_peliculas
@@ -24,10 +24,10 @@ def step_implement(context, titulo):
 
 @when("se busquen las películas por {criterio_busqueda}")
 def step_implement(context, criterio_busqueda):
-        lista_peliculas = context.lista_peliculas
-        titulo = context.titulo
+    lista_peliculas = context.lista_peliculas
+    titulo = context.titulo
 
-    if (criterio_busqueda == "título"):
+    if criterio_busqueda == "título":
         busqueda, mensaje = obtener_pelicula_titulo(lista_peliculas, titulo)
         context.busqueda = busqueda
         context.mensaje = mensaje
@@ -44,13 +44,13 @@ def step_implement(context):
     espero_estas_peliculas = True
     peliculas_esperadas = []
 
-    for (row in context.table):
-        pelicula = Pelicula(row["TITULO"])
-        peliculas_esperadas.append(pelicula)
+    for row in context.table:
+        titulo_pelicula = row["TITULO"]
+        peliculas_esperadas.append(titulo_pelicula)
 
-    for (pelicula in context.resultado):
-        if (pelicula not in peliculas_esperadas):
-            print("No se esperaba la película: ", pelicula.titulo)
+    for pelicula in context.resultado:
+        if pelicula not in peliculas_esperadas:
+            print("No se esperaba la película: " + pelicula.titulo)
             espero_estas_peliculas = False
     
     assert (espero_estas_peliculas is True)
