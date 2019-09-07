@@ -1,6 +1,6 @@
 """Funciones necesarias para busqueda de peliculas."""
 
-def get_pelicula_titulo(lista_peliculas, titulo):
+def obtener_pelicula_titulo(lista_peliculas, titulo):
 	"""Busqueda de peliculas por tilulo"""
 	busqueda = list(filter(lambda x: titulo.lower() in x.titulo.lower(), lista_peliculas))
 	if len(busqueda)>0:
